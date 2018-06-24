@@ -54,10 +54,11 @@ UART_HandleTypeDef huart2;
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 #define MEM_SIZE 32000
-uint8_t payload[]="HELLO WORLD";
-uint8_t label[]="boiyoo";
 uint8_t outbuff[255];
-uint8_t size[1];
+uint8_t rbuff[256];
+uint8_t cdhead[2];
+uint8_t cdhbuff[254];
+uint8_t rsize;
 
 /* USER CODE END PV */
 
@@ -115,19 +116,20 @@ int main(void)
 
 /*
 TODO:
-Check output of each ax25_send steps
-This can be done in a python script.
-make functions to send commands through uart, params command, payload and size
-make it so you can title each output and then display output in binary
-make it a single run script, end it with a done command
-
-to test:
-ax25_create_addr_field
-ax25_prepare_frame
+listen for ground
+take packet and send it to cdh
+listen to cdh
+format packet and send it back to ground
 */
-  py_cmd('w',"boyouu",sizeof("boyouu"));
-  ax25_send(outbuff, payload,sizeof(payload),1);
-  py_cmd('d',1,1);
+
+  rsize=rcsdc(rbuff); //wait for packet from gnd
+  HAL_UART_Transmit(&huart1, rbuff,rsize, 100);//send data from gnd to cdh
+  HAL_UART_Receive(&huart1,cdhead,sizeof(cdhead),10000);//wait for cdh's reply
+  rsize=cdhead[1];
+  HAL_UART_Receive(&huart1,cdhbuff,sizeof(cdhbuff),10000);
+  wcsdc(cdhead,cdhbuff,rsize);//return cdh reply to ground
+  
+
   // size[0]=sizeof(outbuff);
   // HAL_UART_Transmit(&huart2,size,1,100);
   // HAL_Delay(100);

@@ -111,3 +111,38 @@ void py_cmd(char cmd, uint8_t *data, int size){
 
 
 }
+
+void wcsdc(uint8_t *head, uint8_t *data, int size){
+
+  uint8_t out[size+3];
+  int i;
+
+  out[0]=(uint8_t)(size>>8);//settup request command
+
+
+  for (i=0;i<2;i++){
+    out[1+i]=head[i];
+  }
+  for (i=0;i<size;i++){
+    out[3+i]=data[i];
+  }
+
+  HAL_UART_Transmit(&huart2, out,sizeof(out), 100);
+  
+  HAL_Delay(500);
+
+  return;
+}
+/**
+  * @brief  Receives packet from gnd
+  * @param  data the data grounds sends
+  * @retval size of data
+  */
+uint8_t rcsdc(uint8_t *data){
+
+  uint8_t size;
+  HAL_UART_Receive(&huart2, size,1, 10000);
+  HAL_UART_Receive(&huart2, data,size, 10000);
+
+  return size;
+}
