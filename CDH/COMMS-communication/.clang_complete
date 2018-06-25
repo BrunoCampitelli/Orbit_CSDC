@@ -1,0 +1,14 @@
+-IC:\Users\wongb\.platformio\packages\framework-stm32cube\f4\Drivers\CMSIS\Include
+-IC:\Users\wongb\.platformio\packages\framework-stm32cube\f4\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+-IC:\Users\wongb\.platformio\packages\framework-stm32cube\f4\Drivers\STM32F4xx_HAL_Driver\Inc
+-IC:\Users\wongb\.platformio\packages\toolchain-gccarmnoneeabi\arm-none-eabi\include
+-IC:\Users\wongb\.platformio\packages\toolchain-gccarmnoneeabi\arm-none-eabi\include\c++\7.2.1
+-IC:\Users\wongb\.platformio\packages\toolchain-gccarmnoneeabi\arm-none-eabi\include\c++\7.2.1\arm-none-eabi
+-IC:\Users\wongb\.platformio\packages\toolchain-gccarmnoneeabi\lib\gcc\arm-none-eabi\7.2.1\include
+-IC:\Users\wongb\.platformio\packages\toolchain-gccarmnoneeabi\lib\gcc\arm-none-eabi\7.2.1\include-fixed
+-IC:\Users\wongb\.platformio\packages\tool-unity
+-DUSE_HAL_DRIVER
+-DSTM32F4
+-DSTM32F407xx
+-DSTM32F40_41xxx
+-DPLATFORMIO=30600

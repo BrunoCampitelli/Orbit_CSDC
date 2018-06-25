@@ -1,0 +1,8 @@
+{
+  "execPath": "C:/Users/wongb/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++.exe",
+  "gccDefaultCFlags": "-fsyntax-only -Os -ffunction-sections -fdata-sections -Wall -mthumb -nostdlib -mcpu=cortex-m4 -DUSE_HAL_DRIVER -DSTM32F4 -DSTM32F407xx -DSTM32F40_41xxx -DPLATFORMIO=30600",
+  "gccDefaultCppFlags": "-fsyntax-only -fno-rtti -fno-exceptions -Os -ffunction-sections -fdata-sections -Wall -mthumb -nostdlib -mcpu=cortex-m4 -DUSE_HAL_DRIVER -DSTM32F4 -DSTM32F407xx -DSTM32F40_41xxx -DPLATFORMIO=30600",
+  "gccErrorLimit": 15,
+  "gccIncludePaths": "C:/Users/wongb/.platformio/packages/framework-stm32cube/f4/Drivers/CMSIS/Include,C:/Users/wongb/.platformio/packages/framework-stm32cube/f4/Drivers/CMSIS/Device/ST/STM32F4xx/Include,C:/Users/wongb/.platformio/packages/framework-stm32cube/f4/Drivers/STM32F4xx_HAL_Driver/Inc,C:/Users/wongb/.platformio/packages/toolchain-gccarmnoneeabi/arm-none-eabi/include,C:/Users/wongb/.platformio/packages/toolchain-gccarmnoneeabi/arm-none-eabi/include/c++/7.2.1,C:/Users/wongb/.platformio/packages/toolchain-gccarmnoneeabi/arm-none-eabi/include/c++/7.2.1/arm-none-eabi,C:/Users/wongb/.platformio/packages/toolchain-gccarmnoneeabi/lib/gcc/arm-none-eabi/7.2.1/include,C:/Users/wongb/.platformio/packages/toolchain-gccarmnoneeabi/lib/gcc/arm-none-eabi/7.2.1/include-fixed,C:/Users/wongb/.platformio/packages/tool-unity",
+  "gccSuppressWarnings": false
+}
