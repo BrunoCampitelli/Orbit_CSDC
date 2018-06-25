@@ -1,18 +1,17 @@
 # from serial import serial
 import serial
-
-memfile="serout.txt" #change the file being used here
 #st = serial.Serial('COM3',115200, timeout=None,parity=serial.PARITY_NONE, rtscts=0)
 st = serial.Serial('/dev/ttyACM0',115200, timeout=None,parity=serial.PARITY_NONE, rtscts=0)
 
 size=3
-payload="boi"
-out=[]
-for n in range(0,size):
-    out.append('')
-out[0]=size
-out=out.append(payload)
-st.write(out)
+payload=['b','o','i']
+out=chr(size)
+print(out)
+for n in range(1,size+1):
+    out=out+payload[n-1]
+print(out)
+st.write(out.encode('utf-8'))
+# st.write(chr(1).encode('utf-8'))
 size=st.read(1)
 print(st.read(size))
 

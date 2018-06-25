@@ -122,12 +122,13 @@ listen to cdh
 format packet and send it back to ground
 */
 
-  rsize=rcsdc(rbuff); //wait for packet from gnd
-  HAL_UART_Transmit(&huart1, rbuff,rsize, 100);//send data from gnd to cdh
-  HAL_UART_Receive(&huart1,cdhead,sizeof(cdhead),10000);//wait for cdh's reply
-  rsize=cdhead[1];
-  HAL_UART_Receive(&huart1,cdhbuff,sizeof(cdhbuff),10000);
-  wcsdc(cdhead,cdhbuff,rsize);//return cdh reply to ground
+  sertest();
+  // rsize=rcsdc(rbuff); //wait for packet from gnd
+  // HAL_UART_Transmit(&huart1, rbuff,rsize, 100);//send data from gnd to cdh
+  // HAL_UART_Transmit(&huart1,"boi",3, 100);//send data from gnd to cdh
+  // HAL_UART_Receive(&huart1,cdhead,sizeof(cdhead),10000);//wait for cdh's reply
+  // HAL_UART_Receive(&huart1,cdhbuff,sizeof(cdhbuff),10000);
+  // wcsdc(cdhead,cdhbuff,rsize);//return cdh reply to ground
   
 
   // size[0]=sizeof(outbuff);

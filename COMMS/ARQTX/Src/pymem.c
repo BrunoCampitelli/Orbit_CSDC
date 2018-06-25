@@ -146,3 +146,14 @@ uint8_t rcsdc(uint8_t *data){
 
   return size;
 }
+
+
+void sertest(){
+
+  uint8_t in[256];
+  uint8_t size;
+  HAL_UART_Receive(&huart2, size,1, 10000);
+  HAL_UART_Receive(&huart2, in,size, 10000);
+  HAL_UART_Transmit(&huart2, in,size, 10000);
+
+}
