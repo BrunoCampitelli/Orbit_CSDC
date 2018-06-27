@@ -1,19 +1,90 @@
 # from serial import serial
 import serial
+import time
+memfile="payload.jpeg"
+open(memfile, 'w').close()#update physical memory
 #st = serial.Serial('COM3',115200, timeout=None,parity=serial.PARITY_NONE, rtscts=0)
 st = serial.Serial('/dev/ttyACM0',115200, timeout=None,parity=serial.PARITY_NONE, rtscts=0)
 
-size=3
-payload=['b','o','i']
-out=chr(size)
+# payload=chr(0b01100001)+chr(len(message))+message
+################################################################
+timep=10
+payload=chr(0b01100010)+chr(0)*8+chr(timep)+"000fire0"
+size=len(payload)
+print(size)
+
+out=chr(size)+payload
 print(out)
-for n in range(1,size+1):
-    out=out+payload[n-1]
-print(out)
-st.write(out.encode('utf-8'))
-# st.write(chr(1).encode('utf-8'))
+st.write(out.encode())
+# time.sleep(3)
+
 size=st.read(1)
-print(st.read(size))
+size=ord(size)
+if (size==0): size = 256
+print(size)
+cmd=st.read(size)
+print(cmd)
+time.sleep(3)
+
+################################################################
+payload=chr(0b01100010)+chr(1)+"000fire0"
+size=len(payload)
+print(size)
+
+out=chr(size)+payload
+print(out)
+st.write(out.encode())
+# time.sleep(3)
+
+st.reset_input_buffer()
+size=st.read(1)
+size=ord(size)
+print(size)
+if (size==0): size = 256
+cmd=st.read(size)
+print(cmd)
+time.sleep(3)
+################################################################
+payload=chr(0b01100010)+chr(2)+"000fire0"+chr(1)
+size=len(payload)
+print(size)
+
+out=chr(size)+payload
+print(out)
+st.write(out.encode())
+# time.sleep(3)
+
+st.reset_input_buffer()
+size=st.read(1)
+size=ord(size)
+print(size)
+if (size==0): size = 256
+cmd=st.read(size)
+print(cmd)
+################################################################
+# st.write(chr(1).encode('utf-8'))
+# back=st.read(1)
+# print(back)
+print("commands done\n")
+while(1):
+
+    st.reset_input_buffer()
+    size=st.read(1)
+    size=ord(size)
+    print(size)
+    if (size==0): size = 256
+    cmd=st.read(size)
+    print(cmd)
+
+    # for n in range(0,len(cmd)-1):
+    #     memory[address+n]=cmd[n]#modify instantiated memory
+
+    # upstr=''.join(memory)
+    open(memfile, 'ab').close()#update physical memory
+    txtmem=open(memfile,"ab")
+    txtmem.write(cmd[2:])
+    txtmem.close()
+
 
 # while 1:
 #     print("waiting for command")

@@ -54,11 +54,7 @@ UART_HandleTypeDef huart2;
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 #define MEM_SIZE 32000
-uint8_t outbuff[255];
-uint8_t rbuff[256];
-uint8_t cdhead[2];
-uint8_t cdhbuff[254];
-uint8_t rsize;
+
 
 /* USER CODE END PV */
 
@@ -122,14 +118,6 @@ listen to cdh
 format packet and send it back to ground
 */
 
-  sertest();
-  // rsize=rcsdc(rbuff); //wait for packet from gnd
-  // HAL_UART_Transmit(&huart1, rbuff,rsize, 100);//send data from gnd to cdh
-  // HAL_UART_Transmit(&huart1,"boi",3, 100);//send data from gnd to cdh
-  // HAL_UART_Receive(&huart1,cdhead,sizeof(cdhead),10000);//wait for cdh's reply
-  // HAL_UART_Receive(&huart1,cdhbuff,sizeof(cdhbuff),10000);
-  // wcsdc(cdhead,cdhbuff,rsize);//return cdh reply to ground
-  
 
   // size[0]=sizeof(outbuff);
   // HAL_UART_Transmit(&huart2,size,1,100);
@@ -142,6 +130,10 @@ format packet and send it back to ground
   HAL_Delay(100);
   ser_print(recv_buffer,sizeof(recv_buffer));
 */
+// sertest();
+csdcdemo();
+
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
