@@ -9,22 +9,22 @@ st = serial.Serial('/dev/ttyACM0',115200, timeout=None,parity=serial.PARITY_NONE
 # payload=chr(0b01100001)+chr(len(message))+message
 ################################################################
 timep=10
-payload=chr(0b01100010)+chr(0)*8+chr(timep)+"000fire0"
+payload=chr(0b01100010)+chr(0)+chr(timep)+chr(0)*7+"000fire0"
 size=len(payload)
 print(size)
 
 out=chr(size)+payload
 print(out)
+time.sleep(0.1)
 st.write(out.encode())
-# time.sleep(3)
 
 size=st.read(1)
 size=ord(size)
 if (size==0): size = 256
-print(size)
 cmd=st.read(size)
+print(size)
 print(cmd)
-time.sleep(3)
+# time.sleep(3)
 
 ################################################################
 payload=chr(0b01100010)+chr(1)+"000fire0"
@@ -33,6 +33,7 @@ print(size)
 
 out=chr(size)+payload
 print(out)
+time.sleep(0.1)
 st.write(out.encode())
 # time.sleep(3)
 
@@ -43,7 +44,7 @@ print(size)
 if (size==0): size = 256
 cmd=st.read(size)
 print(cmd)
-time.sleep(3)
+# time.sleep(3)
 ################################################################
 payload=chr(0b01100010)+chr(2)+"000fire0"+chr(1)
 size=len(payload)
@@ -51,15 +52,16 @@ print(size)
 
 out=chr(size)+payload
 print(out)
+time.sleep(0.1)
 st.write(out.encode())
 # time.sleep(3)
 
 st.reset_input_buffer()
 size=st.read(1)
 size=ord(size)
+cmd=st.read(size)
 print(size)
 if (size==0): size = 256
-cmd=st.read(size)
 print(cmd)
 ################################################################
 # st.write(chr(1).encode('utf-8'))

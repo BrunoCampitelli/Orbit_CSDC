@@ -119,7 +119,7 @@ void wcsdc(uint8_t *head, uint8_t *data, uint8_t size){
   uint8_t out[size+3];
   int i;
 
-  HAL_Delay(3000);
+  HAL_Delay(100);
   out[0]=(size);//settup request command
 
 
